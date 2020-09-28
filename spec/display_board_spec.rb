@@ -180,17 +180,24 @@ describe "#display_board in 'lib/display_board.rb" do
     end
 
     it 'prints an entire board full of Os' do
+      board = ["O", "O", "O", "O", "O", "O", "O", "O", "O"] # This is not correct
 
+      # Don't touch the following lines.
       output = capture_puts{ display_board(board) } if defined?(display_board)
       rows = output.split("\n")
-      
-      board = ["O", "O", "O", "O", "O", "O", "O", "O", "O"]
 
-      expect(rows[0]).to include(" O | O | O ")
-      expect(rows[1]).to include("-----------")
-      expect(rows[2]).to include(" O | O | O ")
-      expect(rows[3]).to include("-----------")
-      expect(rows[4]).to include(" O | O | O ")
+      # Each line that starts with expect represents a row in the ouput.
+      # The desired characters a row must include are provided by the String
+      # of the row. EX: The top row filled with X would be " X | X | X "
+
+      # You would code that expectation with:
+      # expect(output).to include(" X | X | X ")
+      # meaning you expect the entire output to at least include a matching row.
+      expect(rows[0]).to include (" O | O | O ")
+      expect(rows[1]).to include ("-----------")
+      expect(rows[2]).to include (" O | O | O ")
+      expect(rows[3]).to include ("-----------")
+      expect(rows[4]).to include (" O | O | O ")
       # expect(true).to be(true)
     end
   end
