@@ -180,6 +180,10 @@ describe "#display_board in 'lib/display_board.rb" do
     end
 
     it 'prints an entire board full of Os' do
+
+      output = capture_puts{ display_board(board) } if defined?(display_board)
+      rows = output.split("\n")
+      
       board = ["O", "O", "O", "O", "O", "O", "O", "O", "O"]
 
       expect(rows[0]).to include(" O | O | O ")
